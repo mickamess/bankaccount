@@ -1,5 +1,7 @@
 const bankaccount = require('./bankaccount')
 const deposit = require('./operations/deposit');
+const withdraw = require('./operations/withdraw');
+
 
 it('expected true should return true', function(){
     expect(true).toBe(true)
@@ -20,4 +22,15 @@ it('should have a new balance of 100.1234 after deposit of 100.1234 previous bal
     bankaccount.balance = 0;
     deposit(bankaccount,100.1234);
     expect(bankaccount.balance).toBe(100.1234)
+});
+
+it('should have a new balance of 0 after withdraw of 100 with previous balance 100 ', function(){
+    bankaccount.balance = 100;
+    withdraw(bankaccount,100);
+    expect(bankaccount.balance).toBe(0)
+});
+
+it('should have exception if withdraw negative amount ', function(){
+    bankaccount.balance = 100;
+    expect(withdraw(bankaccount,-100)).toBe('! please enter a positive amount !')
 });
