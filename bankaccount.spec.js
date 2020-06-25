@@ -1,6 +1,7 @@
-const bankaccount = require('./bankaccount')
+const bankaccount = require('./bankaccount');
 const deposit = require('./operations/deposit');
 const withdraw = require('./operations/withdraw');
+bankaccount.history=[];
 
 
 it('expected true should return true', function(){
@@ -34,3 +35,19 @@ it('should have exception if withdraw negative amount ', function(){
     bankaccount.balance = 100;
     expect(withdraw(bankaccount,-100)).toBe('! please enter a positive amount !')
 });
+
+it('should have exception if withdraw with insuffisant current balance', function(){
+    bankaccount.balance = 100;
+    expect(withdraw(bankaccount,150)).toBe(`your current balance (${bankaccount.balance}) insuffisant for this withdrawal`)
+});
+
+it('we should see history of the operations after deposit 100 ', function(){
+    bankaccount.balance = 100;
+    deposit(bankaccount, 100);
+    expect(bankaccount.history).toBe([
+        {
+            date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} at ${date.getHours()}:${date.getSeconds()}`,
+            amount: `deposit of ${depositAmount.toFixed(4)}€`
+        }
+    ]
+)})
