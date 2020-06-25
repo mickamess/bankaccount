@@ -1,17 +1,17 @@
 const deposit = require('./operations/deposit')
 const withdraw = require('./operations/withdraw')
-class BankAccount {
-    constructor(balance) {
-        this.balance = balance;
-        this.history = [];
-    }
-}
-const MyBankAccount = new BankAccount(50)
 
-// session de test
-deposit(MyBankAccount, 155.1234);
-deposit(MyBankAccount, 100);
-withdraw(MyBankAccount, 55.50)
-console.log(MyBankAccount.history);
+module.exports =  function (balance) { 
 
-exports.bankaccount = BankAccount;
+    this.balance = balance;
+    this.history = [];
+};
+
+
+
+/* session de test
+deposit(myBankAccount, 155.1234);
+deposit(myBankAccount, 100);
+withdraw(myBankAccount, 55.50)
+console.log(myBankAccount.history);*/
+
