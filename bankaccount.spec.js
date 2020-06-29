@@ -1,7 +1,7 @@
 const bankaccount = require('./bankaccount');
 const deposit = require('./operations/deposit');
 const withdraw = require('./operations/withdraw');
-bankaccount.history=[];
+bankaccount.history = [];
 
 
 it('expected true should return true', function(){
@@ -42,8 +42,8 @@ it('should have exception if withdraw with insuffisant current balance', functio
 });
 
 it('we should see history of the operations after deposit 100 ', function(){
-    bankaccount.balance = 100;
     deposit(bankaccount, 100);
+    console.log(bankaccount.history);
     expect(bankaccount.history).toBe([
         {
             date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} at ${date.getHours()}:${date.getSeconds()}`,
