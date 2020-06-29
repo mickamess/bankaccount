@@ -7,9 +7,6 @@ const myBankAccount = {
 
 
 // session de test
-deposit(myBankAccount, 155.1234);
-deposit(myBankAccount, 100);
-withdraw(myBankAccount, 55.50)
-console.log(myBankAccount.history);
+
 
 exports.bankaccount = myBankAccount;

@@ -42,12 +42,9 @@ it('should have exception if withdraw with insuffisant current balance', functio
 });
 
 it('we should see history of the operations after deposit 100 ', function(){
+    bankaccount.history = [];
+    bankaccount.balance = 0;
     deposit(bankaccount, 100);
     console.log(bankaccount.history);
-    expect(bankaccount.history).toBe([
-        {
-            date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} at ${date.getHours()}:${date.getSeconds()}`,
-            amount: `deposit of ${depositAmount.toFixed(4)}€`
-        }
-    ]
-)})
+    expect(bankaccount.history).toMatchObject(detailsOfDeposit);
+})
